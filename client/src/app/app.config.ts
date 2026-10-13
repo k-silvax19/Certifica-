@@ -1,7 +1,25 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Routes } from '@angular/router';
 
-import { routes } from './app.routes';
+
+export const routes: Routes = [
+    {
+        path: '',
+        loadComponent: () => import('./home/home').then((c) => c.Home)
+    },
+    {
+        path: 'cadastro',
+        loadComponent: () => import('./auth/cadastro/cadastro').then((c) => c.Cadastro)
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login').then((l) => l.Login)
+    },
+    {
+        path: '**',
+        redirectTo: ''
+    }
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
