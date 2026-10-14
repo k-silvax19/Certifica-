@@ -10,6 +10,12 @@
     </p>
   </div>
 
+  <div
+    class="mb-5 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900"
+    role="alert"
+  >
+    Notificação de erro
+  </div>
 
   <form novalidate class="space-y-5">
     <div>
@@ -26,6 +32,7 @@
         placeholder="voce@exemplo.com"
       />
 
+      <p id="cadastro-email-erro" class="mt-1 text-sm text-rose-700">Erro de validação</p>
     </div>
 
     <div>
@@ -43,6 +50,7 @@
       <p id="dica-senha" class="mt-2 text-xs leading-5 text-slate-600">
         Use ao menos 8 caracteres, incluindo um número e um símbolo.
       </p>
+      <p id="cadastro-senha-erro" class="mt-1 text-sm text-rose-700">Erro de validação</p>
     </div>
 
     <button
