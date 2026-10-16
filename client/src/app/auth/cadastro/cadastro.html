@@ -1,7 +1,11 @@
-<app-pagina-autenticacao>
+<app-auth-shell>
   <div class="mb-8">
     <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">COMECE SUA JORNADA</p>
-    <h2 class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none">
+    <h2
+      #tituloPagina
+      tabindex="-1"
+      class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none"
+    >
       Crie sua conta
     </h2>
 
@@ -17,7 +21,7 @@
     Notificação de erro
   </div>
 
-  <form novalidate class="space-y-5">
+  <form (submit)="enviarFormulario($event)" novalidate class="space-y-5">
     <div>
       <label for="cadastro-email" class="mb-2 block text-sm font-medium text-slate-800"
         >Email</label
@@ -30,9 +34,22 @@
         inputmode="email"
         class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
         placeholder="voce@exemplo.com"
+        [formField]="formularioCadastro.email"
+        [attr.aria-invalid]="
+          formularioCadastro.email().touched() && formularioCadastro.email().invalid()
+        "
+        [attr.aria-describedby]="
+          formularioCadastro.email().touched() && formularioCadastro.email().invalid()
+            ? 'cadastro-email-erro'
+            : null
+        "
       />
 
-      <p id="cadastro-email-erro" class="mt-1 text-sm text-rose-700">Erro de validação</p>
+      @if (formularioCadastro.email().touched() && formularioCadastro.email().invalid()) {
+        <p id="cadastro-email-erro" class="mt-1 text-sm text-rose-700">
+          {{ formularioCadastro.email().errors()[0].message }}
+        </p>
+      }
     </div>
 
     <div>
@@ -46,11 +63,25 @@
         autocomplete="password"
         class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
         placeholder="Crie uma senha segura"
+        [formField]="formularioCadastro.senha"
+        [attr.aria-invalid]="
+          formularioCadastro.senha().touched() && formularioCadastro.senha().invalid()
+        "
+        [attr.aria-describedby]="
+          formularioCadastro.senha().touched() && formularioCadastro.senha().invalid()
+            ? 'cadastro-senha-erro'
+            : null
+        "
       />
       <p id="dica-senha" class="mt-2 text-xs leading-5 text-slate-600">
         Use ao menos 8 caracteres, incluindo um número e um símbolo.
       </p>
-      <p id="cadastro-senha-erro" class="mt-1 text-sm text-rose-700">Erro de validação</p>
+
+      @if (formularioCadastro.senha().touched() && formularioCadastro.senha().invalid()) {
+        <p id="cadastro-senha-erro" class="mt-1 text-sm text-rose-700">
+          {{ formularioCadastro.senha().errors()[0].message }}
+        </p>
+      }
     </div>
 
     <button
@@ -69,4 +100,4 @@
       >Entrar</a
     >
   </p>
-</app-pagina-autenticacao>
+</app-auth-shell>

@@ -1,5 +1,8 @@
+import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
+import { URL_API } from './auth/auth.tokens';
+import { environment } from '../environments/environment.development';
 
 
 export const routes: Routes = [
@@ -24,6 +27,13 @@ export const routes: Routes = [
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideHttpClient(),
+    {
+        provide: URL_API,
+        useValue: environment.urlApi,
+    
+    },
+    
   ]
 };
