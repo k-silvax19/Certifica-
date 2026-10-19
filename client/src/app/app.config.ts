@@ -1,27 +1,26 @@
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
-import { URL_API } from './auth/auth.tokens';
+import { CHAVE_ARMAZENAMENTO, URL_API } from './auth/auth.tokens';
 import { environment } from '../environments/environment.development';
 
-
 export const routes: Routes = [
-    {
-        path: '',
-        loadComponent: () => import('./home/home').then((c) => c.Home)
-    },
-    {
-        path: 'cadastro',
-        loadComponent: () => import('./auth/cadastro/cadastro').then((c) => c.Cadastro)
-    },
-    {
-        path: 'login',
-        loadComponent: () => import('./auth/login/login').then((l) => l.Login)
-    },
-    {
-        path: '**',
-        redirectTo: ''
-    }
+  {
+    path: '',
+    loadComponent: () => import('./home/home').then((c) => c.Home),
+  },
+  {
+    path: 'cadastro',
+    loadComponent: () => import('./auth/cadastro/cadastro').then((c) => c.Cadastro),
+  },
+  {
+    path: 'login',
+    loadComponent: () => import('./auth/login/login').then((l) => l.Login),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 export const appConfig: ApplicationConfig = {
@@ -30,10 +29,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     {
-        provide: URL_API,
-        useValue: environment.urlApi,
-    
+      provide: URL_API,
+      useValue: environment.urlApi,
     },
-    
-  ]
+    {
+      provide: CHAVE_ARMAZENAMENTO,
+      useValue: 'certica+.sessao',
+    },
+  ],
 };
