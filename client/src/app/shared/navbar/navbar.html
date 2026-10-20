@@ -8,13 +8,15 @@
     <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }"
       ><span aria-hidden="true">⌂</span> Home</a
     >
-    <a routerLink="/cursos" routerLinkActive="is-active"
-      ><span aria-hidden="true">◇</span> Cursos
-      <span class="nav-arrow" aria-hidden="true">⌄</span></a
-    >
-    <a routerLink="/cursos/cadastrar" routerLinkActive="is-active"
-      ><span aria-hidden="true">⊕</span> Cadastrar curso</a
-    >
+    @if (sessaoAutenticada()) {
+      <a routerLink="/cursos" routerLinkActive="is-active"
+        ><span aria-hidden="true">◇</span> Cursos
+        <span class="nav-arrow" aria-hidden="true">⌄</span></a
+      >
+      <a routerLink="/cursos/cadastrar" routerLinkActive="is-active"
+        ><span aria-hidden="true">⊕</span> Cadastrar curso</a
+      >
+    }
   </nav>
   <div class="sidebar-account">
     @if (sessaoAutenticada(); as sessao) {
@@ -23,7 +25,6 @@
           sessao.usuario.email.charAt(0).toUpperCase()
         }}</span>
         <div>
-          <p>Minha instituição</p>
           <span class="account-email">{{ sessao.usuario.email }}</span>
         </div>
       </div>
