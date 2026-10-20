@@ -18,6 +18,20 @@ export const routes: Routes = [
     loadComponent: () => import('./auth/login/login').then((l) => l.Login),
   },
   {
+    path: 'cursos',
+    loadComponent: () => import('./cursos/shell/cursos-shell').then((l) => l.CursosShell),
+    children: [
+      { path: '', redirectTo: 'listar', pathMatch: 'full' },
+      { path: 'listar', 
+        loadComponent: () => import('./cursos/listar/listar-cursos').then((l) => l.ListarCursos)
+      },
+      {
+        path: 'cadastrar',
+        loadComponent: () => import('./cursos/cadastrar/cadastrar-cursos').then((l) => l.CadastrarCursos)
+      }
+    ],
+  },
+  {
     path: '**',
     redirectTo: '',
   },
