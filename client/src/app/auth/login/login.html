@@ -1,21 +1,20 @@
 <app-auth-shell>
   <div class="mb-8">
-    <p class="mb-3 text-sm font-semibold tracking-wide text-indigo-700">ACESSO DA INSTITUIÇÃO</p>
     <h2
       #tituloPagina
       class="text-3xl font-semibold tracking-tight text-slate-950 focus:outline-none"
     >
-      Entre na sua conta
+      Entrar
     </h2>
 
     <p class="mt-2 text-sm leading-6 text-slate-600">
-      Acesse os cursos da sua instituição e acompanhe os certificados emitidos para seus alunos.
+      Informe seu email e senha para continuar.
     </p>
   </div>
 
   @if (mensagemSucesso()) {
     <div
-      class="mb-5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
+      class="mb-5 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900"
       role="alert"
     >
       {{ mensagemSucesso() }}
@@ -24,7 +23,7 @@
 
   @if (mensagemErro()) {
     <div
-      class="mb-5 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900"
+      class="mb-5 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900"
       role="alert"
     >
       {{ mensagemErro() }}
@@ -40,7 +39,7 @@
         type="email"
         autocomplete="email"
         inputmode="email"
-        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
         placeholder="voce@exemplo.com"
         [formField]="formularioLogin.email"
         [attr.aria-invalid]="formularioLogin.email().touched() && formularioLogin.email().invalid()"
@@ -67,7 +66,7 @@
         id="login-senha"
         type="password"
         autocomplete="password"
-        class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
+        class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/15 aria-[invalid=true]:border-rose-600"
         placeholder="Sua senha"
         [formField]="formularioLogin.senha"
         [attr.aria-invalid]="formularioLogin.senha().touched() && formularioLogin.senha().invalid()"
@@ -87,11 +86,11 @@
 
     <button
       type="submit"
-      class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 disabled:cursor-wait disabled:opacity-70"
+      class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-indigo-700 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700 disabled:cursor-wait disabled:opacity-70"
       [disabled]="enviandoFormulario()"
       [attr.aria-busy]="enviandoFormulario()"
     >
-      Entrar na minha conta <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>
+      Entrar <svg lucideArrowRight class="size-4" aria-hidden="true"></svg>
     </button>
   </form>
 

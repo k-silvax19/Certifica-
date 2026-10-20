@@ -2,9 +2,9 @@
 
 @theme {
   --color-indigo-50: #221332;
-  --color-indigo-600: #a13dff;
-  --color-indigo-700: #9017ee;
-  --color-indigo-800: #a43aff;
+  --color-indigo-600: #a878ce;
+  --color-indigo-700: #7944a8;
+  --color-indigo-800: #8b53bb;
   --color-cyan-200: #d9b6ff;
   --color-cyan-300: #bd78ff;
   --color-cyan-400: #a13dff;
@@ -131,7 +131,7 @@
     background-color: #09080d;
   }
   .bg-\[\#101b36\] {
-    background: radial-gradient(ellipse at top right, #4d157a66, transparent 75%), #160e24;
+    background: #17141c;
   }
   .rounded-2xl {
     border-radius: 12px;
@@ -143,7 +143,7 @@
 
 .app-layout {
   min-height: 100dvh;
-  background: radial-gradient(ellipse at 90% 0, #36104d18, transparent 45%), #09080c;
+  background: #101013;
 }
 .app-sidebar {
   position: fixed;
@@ -153,7 +153,7 @@
   display: flex;
   flex-direction: column;
   padding: 32px 18px 20px;
-  background: linear-gradient(165deg, #1c102e, #140c23 65%);
+  background: #19161e;
   border-right: 1px solid #33223e;
 }
 .brand {
@@ -161,37 +161,9 @@
   align-items: center;
   gap: 10px;
   padding: 0 8px;
-  font-size: 24px;
-  font-weight: 750;
+  font-size: 22px;
+  font-weight: 600;
   letter-spacing: -1px;
-}
-.brand-plus {
-  color: #b348ff;
-}
-.brand-symbol {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 36px;
-  background: linear-gradient(145deg, #b144ff, #7714cb);
-  border-radius: 6px;
-  font-size: 24px;
-  color: #e9caff;
-  box-shadow: 0 0 28px #8e22e52b;
-}
-.brand-symbol span {
-  position: absolute;
-  right: -4px;
-  bottom: -6px;
-  font-size: 18px;
-  color: #d4a1ff;
-}
-.sidebar-caption {
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  color: #81738e;
-  margin: 50px 10px 14px;
 }
 .sidebar-links {
   display: grid;
@@ -210,25 +182,15 @@
   font-size: 13px;
   text-align: left;
 }
-.sidebar-links a > span:first-child {
-  font-size: 21px;
-  line-height: 1;
-  width: 22px;
-  text-align: center;
-}
 .sidebar-links a:hover,
 .sidebar-account > button:hover {
   background: #ffffff08;
   color: white;
 }
 .sidebar-links a.is-active {
-  background: linear-gradient(100deg, #ffffff13, #9d4bdd1c);
+  background: #302637;
   border-color: #ffffff0a;
   color: #f8f2ff;
-}
-.nav-arrow {
-  margin-left: auto;
-  color: #aa96ba;
 }
 .sidebar-account {
   margin-top: auto;
@@ -242,26 +204,13 @@
   padding: 20px 4px 10px;
   font-size: 12px;
 }
-.account-profile > div {
-  min-width: 0;
-}
-.account-avatar {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  background: #382147;
-  color: #ce9ef3;
-}
 .account-email {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #95869f;
-  font-size: 10px;
-  max-width: 145px;
+  font-size: 12px;
+  max-width: 180px;
   margin-top: 3px;
 }
 .sidebar-footer {
@@ -273,62 +222,13 @@
   margin-left: 228px;
   min-width: 0;
 }
-.workspace-topbar {
-  min-height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 0 38px;
-  border-bottom: 1px solid #211c29;
-  font-size: 11px;
-  color: #9b90a8;
-}
-.workspace-topbar > span > span {
-  margin: 0 14px;
-  color: #55465e;
-}
-.workspace-indicator {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.workspace-indicator i {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #ae54f1;
-  box-shadow: 0 0 10px #a43aff66;
-}
 .workspace-body {
   max-width: 1300px;
   margin: auto;
   padding: 28px 38px 48px;
 }
-.course-tabs {
-  display: flex;
-  gap: 24px;
-  border-bottom: 1px solid #25202d;
-  margin-bottom: 32px;
-}
-.course-tabs a {
-  padding: 0 0 14px;
-  font-size: 12px;
-  color: #9b90a8;
-  border-bottom: 2px solid transparent;
-}
-.course-tabs a.tab-active {
-  color: #d2a1fb;
-  border-color: #a13dff;
-}
 .details-heading {
   margin-bottom: 28px;
-}
-.eyebrow {
-  font-size: 10px;
-  letter-spacing: 1.6px;
-  color: #af6ddd;
-  margin-bottom: 12px;
 }
 .details-heading h1 {
   font-size: clamp(21px, 2.1vw, 30px);
@@ -353,34 +253,19 @@
 }
 .course-summary {
   padding: 25px;
-  border: 1px solid #4d2a66;
+  border: 1px solid #302b36;
   border-radius: 10px;
-  background:
-    radial-gradient(ellipse at 85% 0, #681caa60, transparent 75%),
-    linear-gradient(135deg, #19121f, #110f16);
+  background: #17141b;
 }
-.summary-tag,
 .small-tag {
-  font-size: 9px;
-  letter-spacing: 1px;
-  color: #ac86ca;
+  font-size: 12px;
+  color: #a096ad;
 }
 .summary-item {
   display: flex;
   align-items: center;
   gap: 13px;
   margin-top: 25px;
-}
-.summary-icon {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  color: #c17af6;
-  background: #6b239b40;
-  border: 1px solid #9143c127;
-  border-radius: 8px;
-  font-size: 25px;
 }
 .summary-item dt {
   font-size: 11px;
@@ -391,27 +276,6 @@
   font-weight: 600;
   margin-top: 2px;
 }
-.summary-footer {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  border-top: 1px solid #ffffff0c;
-  margin-top: 26px;
-  padding-top: 20px;
-}
-.summary-footer > span {
-  color: #bb71f5;
-  font-size: 25px;
-}
-.summary-footer h2 {
-  font-size: 14px;
-  font-weight: 600;
-}
-.summary-footer p {
-  font-size: 10px;
-  color: #9f8cab;
-  margin-top: 4px;
-}
 .course-workspace app-gerar-certificados,
 .certificate-panel {
   display: contents;
@@ -419,7 +283,7 @@
 .request-card {
   border: 1px solid #302538;
   border-radius: 10px;
-  background: #0d0b11;
+  background: #17141b;
   padding: 24px;
 }
 .request-heading,
@@ -434,11 +298,6 @@
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.3px;
-}
-.request-description {
-  margin-top: 5px;
-  font-size: 11px;
-  color: #93879f;
 }
 .request-card fieldset {
   margin-top: 18px;
@@ -461,14 +320,14 @@
   min-height: 96px;
   margin-top: 8px;
   padding: 11px 13px;
-  border: 1px solid #75419a;
+  border: 1px solid #49404f;
   border-radius: 6px;
   font-size: 12px;
   line-height: 1.5;
   background: #1c1822;
 }
 #nomes-ajuda {
-  font-size: 10px;
+  font-size: 12px;
   color: #8c7f98;
   margin: 7px 0 12px;
 }
@@ -478,8 +337,8 @@
   justify-content: center;
   gap: 10px;
   padding: 10px 17px;
-  background: linear-gradient(100deg, #9619ed, #8814e3);
-  box-shadow: 0 3px 16px #7b11c82b;
+  background: #7944a8;
+  box-shadow: none;
   border: 1px solid #b75cff40;
   border-radius: 6px;
   color: white;
@@ -487,8 +346,8 @@
   font-weight: 550;
 }
 .primary-button:hover:not(:disabled) {
-  background: #a22bf4;
-  box-shadow: 0 3px 20px #8d28df44;
+  background: #8b53bb;
+  box-shadow: none;
 }
 .request-card .primary-button {
   width: 100%;
@@ -549,7 +408,7 @@
   background: #21182c;
 }
 .generation-progress::-webkit-progress-value {
-  background: linear-gradient(90deg, #7915c7, #bd78ff);
+  background: #9860c0;
 }
 .generation-progress::-moz-progress-bar {
   background: #a13dff;
@@ -567,7 +426,7 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 12px;
+  font-size: 13px;
 }
 .certificate-table th {
   position: sticky;
@@ -674,13 +533,9 @@
 .certificate-empty {
   padding: 32px 20px;
   text-align: center;
-  border: 1px dashed #33263f;
+  border: 1px solid #302b36;
   border-radius: 9px;
   background: #110d17;
-}
-.certificate-empty > span {
-  color: #a452e5;
-  font-size: 28px;
 }
 .certificate-empty h2 {
   margin-top: 8px;
@@ -693,7 +548,7 @@
   margin-top: 7px;
 }
 .home-content {
-  padding: 100px 48px;
+  padding: 40px 38px;
   max-width: 1450px;
 }
 @media (min-width: 1500px) {
@@ -712,14 +567,11 @@
   .workspace-body {
     padding: 24px;
   }
-  .workspace-topbar {
-    padding-inline: 24px;
-  }
   .workspace-indicator {
     display: none;
   }
   .home-content {
-    padding: 60px 30px;
+    padding: 32px 24px;
   }
   .course-workspace {
     gap: 16px;
@@ -741,7 +593,6 @@
     font-size: 22px;
     padding: 0;
   }
-  .sidebar-caption,
   .account-profile,
   .sidebar-footer {
     display: none;
@@ -771,11 +622,6 @@
   .app-content {
     margin-left: 0;
   }
-  .workspace-topbar {
-    min-height: 48px;
-    padding: 0 20px;
-    font-size: 10px;
-  }
   .workspace-body {
     padding: 22px 20px 36px;
   }
@@ -789,10 +635,10 @@
     font-size: 16px;
   }
   .processing-heading .small-tag {
-    font-size: 8px;
+    font-size: 11px;
   }
   .home-content {
-    padding: 48px 24px;
+    padding: 28px 20px;
   }
   .home-content .flex {
     flex-wrap: wrap;

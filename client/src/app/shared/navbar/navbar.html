@@ -1,39 +1,32 @@
-<aside class="app-sidebar">
+﻿<aside class="app-sidebar">
   <a routerLink="/" class="brand" aria-label="Insignia, página inicial"
-    ><span class="brand-symbol" aria-hidden="true">▤<span>✦</span></span
+    ><svg lucideFileText class="size-6 text-indigo-600" aria-hidden="true"></svg
     ><span>Insignia</span></a
   >
-  <p class="sidebar-caption">ESPAÇO DA INSTITUIÇÃO</p>
-  <nav class="sidebar-links" aria-label="Navegação principal">
+  <nav class="sidebar-links mt-10" aria-label="Navegação principal">
     <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }"
-      ><span aria-hidden="true">⌂</span> Home</a
+      ><svg lucideHouse class="size-4" aria-hidden="true"></svg>Início</a
     >
     @if (sessaoAutenticada()) {
-      <a routerLink="/cursos" routerLinkActive="is-active"
-        ><span aria-hidden="true">◇</span> Cursos
-        <span class="nav-arrow" aria-hidden="true">⌄</span></a
+      <a routerLink="/cursos/listar" routerLinkActive="is-active"
+        ><svg lucideBookOpen class="size-4" aria-hidden="true"></svg>Cursos</a
       >
       <a routerLink="/cursos/cadastrar" routerLinkActive="is-active"
-        ><span aria-hidden="true">⊕</span> Cadastrar curso</a
+        ><svg lucidePlus class="size-4" aria-hidden="true"></svg>Cadastrar curso</a
       >
     }
   </nav>
   <div class="sidebar-account">
     @if (sessaoAutenticada(); as sessao) {
       <div class="account-profile">
-        <span class="account-avatar" aria-hidden="true">{{
-          sessao.usuario.email.charAt(0).toUpperCase()
-        }}</span>
-        <div>
-          <span class="account-email">{{ sessao.usuario.email }}</span>
-        </div>
+        <span class="account-email" [title]="sessao.usuario.email">{{ sessao.usuario.email }}</span>
       </div>
       <button type="button" (click)="authService.encerrarSessao()">
-        <span aria-hidden="true">↪</span> Sair da conta
+        <svg lucideLogOut class="size-4" aria-hidden="true"></svg>Sair da conta
       </button>
     } @else {
-      <a routerLink="/login"><span aria-hidden="true">↪</span> Entrar na conta</a>
+      <a routerLink="/login"><svg lucideLogOut class="size-4" aria-hidden="true"></svg>Entrar</a>
     }
-    <p class="sidebar-footer">Insignia · 2026</p>
+    <p class="sidebar-footer">© 2026 Insignia</p>
   </div>
 </aside>

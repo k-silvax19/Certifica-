@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideAward, LucideFileText } from '@lucide/angular';
-
+import { LucideFileText } from '@lucide/angular';
 
 @Component({
-  imports: [LucideFileText, LucideAward, RouterLink],
+  imports: [LucideFileText, RouterLink],
   selector: 'app-auth-shell',
   templateUrl: './auth-shell.html',
 })

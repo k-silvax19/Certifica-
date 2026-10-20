@@ -2,9 +2,7 @@
   <form class="request-card" (submit)="gerar($event)">
     <div class="request-heading">
       <h2 id="certificados-titulo">Nova solicitação</h2>
-      <span class="small-tag">PDF + ZIP</span>
     </div>
-    <p class="request-description">Transforme a conclusão em reconhecimento.</p>
     <fieldset [disabled]="enviando() || carregando() || emAndamento()">
       <label for="nomes-alunos">Alunos <span>(um por linha)</span></label>
       <textarea
@@ -32,7 +30,6 @@
               ? 'Geração em andamento'
               : 'Enviar solicitação'
         }}
-        <span aria-hidden="true">↗</span>
       </button>
     </fieldset>
   </form>
@@ -51,13 +48,12 @@
   @if (status(); as processamento) {
     <section class="processing-section" aria-labelledby="processing-heading">
       <div class="processing-heading">
-        <h2 id="processing-heading">Acompanhamento do lote recente</h2>
+        <h2 id="processing-heading">Último processamento</h2>
         <span class="small-tag">{{
-          emAndamento() ? 'ATUALIZAÇÃO AUTOMÁTICA' : 'ÚLTIMO LOTE'
+          emAndamento() ? 'Atualizando automaticamente' : 'Finalizado'
         }}</span>
       </div>
       <div class="processing-badges" role="status" aria-live="polite">
-        <span class="status-badge badge-purple">◈ Lote recente</span>
         <span class="status-badge" [class.badge-warning]="processamento.falhas > 0">{{
           descreverStatus(processamento.status)
         }}</span>
@@ -65,10 +61,10 @@
           >Total: <strong>{{ processamento.totalCertificados }}</strong></span
         >
         <span class="status-badge badge-success"
-          >✓ Gerados: <strong>{{ processamento.gerados }}</strong></span
+          >Gerados: <strong>{{ processamento.gerados }}</strong></span
         >
         <span class="status-badge badge-error"
-          >× Falhas: <strong>{{ processamento.falhas }}</strong></span
+          >Falhas: <strong>{{ processamento.falhas }}</strong></span
         >
       </div>
       <progress
@@ -126,16 +122,15 @@
         </p>
         @if (processamento.zipDisponivel) {
           <button type="button" (click)="baixar()" [disabled]="baixando()" class="primary-button">
-            <span aria-hidden="true">⇩</span>{{ baixando() ? 'Baixando...' : 'Baixar todos (ZIP)' }}
+            {{ baixando() ? 'Baixando...' : 'Baixar todos (ZIP)' }}
           </button>
         }
       </footer>
     </section>
   } @else if (!carregando()) {
     <div class="certificate-empty">
-      <span aria-hidden="true">▤</span>
-      <h2>O próximo reconhecimento começa aqui</h2>
-      <p>Envie os nomes dos alunos para gerar o primeiro lote de certificados deste curso.</p>
+      <h2>Nenhum certificado gerado</h2>
+      <p>Informe os alunos acima para iniciar a geração.</p>
     </div>
   }
 </section>

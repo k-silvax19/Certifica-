@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideArrowRight, LucideAward, LucideSparkles } from '@lucide/angular';
+import { LucideArrowRight, LucideBookOpen, LucideFileText } from '@lucide/angular';
 import { AuthService } from '../auth/auth.service';
 import { Navbar } from '../shared/navbar/navbar';
 
 @Component({
-  imports: [LucideAward, LucideSparkles, LucideArrowRight, RouterLink, Navbar],
+  imports: [LucideBookOpen, LucideFileText, LucideArrowRight, RouterLink, Navbar],
   selector: 'app-home',
   templateUrl: './home.html',
 })

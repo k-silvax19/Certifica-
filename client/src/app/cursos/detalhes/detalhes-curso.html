@@ -1,49 +1,40 @@
 ﻿@if (mensagemErro()) {
   <div
-    class="mb-6 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900"
+    class="mb-6 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-900"
     role="alert"
   >
     {{ mensagemErro() }}
   </div>
 }
 @if (carregando()) {
-  <p class="rounded-2xl border border-slate-200 bg-white p-6 text-slate-600" role="status">
+  <p class="rounded-lg border border-slate-200 bg-white p-6 text-slate-600" role="status">
     Carregando curso...
   </p>
 } @else if (curso(); as curso) {
   <header class="details-heading">
-    <p class="eyebrow">CURSOS / DETALHES</p>
-    <h1>
-      Detalhes do Curso: <span>{{ curso.nome }}</span>
-    </h1>
-    <p>Do aprendizado à conquista. Gerencie a emissão dos certificados deste curso.</p>
+    <h1>{{ curso.nome }}</h1>
+    <p>Dados do curso e emissão de certificados.</p>
   </header>
   <div class="course-workspace">
-    <section class="course-summary" aria-label="Informações do curso">
-      <span class="summary-tag">CURSO CADASTRADO</span>
-      <dl>
+    <section class="course-summary" aria-labelledby="dados-curso-titulo">
+      <h2 id="dados-curso-titulo" class="text-base font-semibold">Dados do curso</h2>
+      <dl class="mb-0">
         <div class="summary-item">
-          <span class="summary-icon" aria-hidden="true">◷</span>
           <div>
             <dt>Carga horária</dt>
             <dd>{{ curso.cargaHoraria }} horas</dd>
           </div>
         </div>
         <div class="summary-item">
-          <span class="summary-icon" aria-hidden="true">▦</span>
           <div>
             <dt>Data de conclusão</dt>
             <dd>{{ formatarData(curso.dataConclusao) }}</dd>
           </div>
         </div>
       </dl>
-      <div class="summary-footer">
-        <span aria-hidden="true">✦</span>
-        <div>
-          <h2>Geração de Certificados</h2>
-          <p>Cada certificado, uma conquista reconhecida.</p>
-        </div>
-      </div>
+      <p class="mt-6 border-t border-slate-200 pt-4 text-sm leading-6 text-slate-500">
+        Essas informações serão utilizadas nos certificados dos alunos.
+      </p>
     </section>
     <app-gerar-certificados [cursoId]="curso.id" />
   </div>
