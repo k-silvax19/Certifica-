@@ -12,6 +12,15 @@ public sealed class RepositorioCursoEmOrm(CertificadosDbContext db) : IRepositor
         await db.SaveChangesAsync(cancellationToken);
     }
 
+    public async Task<IReadOnlyList<Curso>> SelecionarTodosAsync(CancellationToken cancellationToken)
+    {
+        return await db.Cursos
+            .AsNoTracking()
+            .OrderBy(c => c.Nome)
+            .ThenBy(c => c.Id)
+            .ToListAsync(cancellationToken);
+    }
+
     public Task<Curso?> SelecionarPorIdAsync(Guid id, CancellationToken cancellationToken)
     {
         return db.Cursos.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
