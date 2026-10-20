@@ -28,4 +28,5 @@
       <dd class="mt-1 text-slate-900">{{ formatarData(curso.dataConclusao) }}</dd>
     </div>
   </dl>
+  <app-gerar-certificados [cursoId]="curso.id" />
 }

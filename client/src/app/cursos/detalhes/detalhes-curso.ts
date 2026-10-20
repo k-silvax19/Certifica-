@@ -5,9 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CursosService } from '../cursos.service';
 import { CursoDto } from '../curso.models';
 import { ApiValidationProblemDetails } from '../../auth/auth-models';
+import { GerarCertificados } from '../../certificados/gerar/gerar-certificados';
 
 @Component({
-  imports: [],
+  imports: [GerarCertificados],
   selector: 'app-detalhes-curso',
   templateUrl: './detalhes-curso.html',
 })
