@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using GeradorCertificadosOnline.Api.Compartilhado.Http;
 using GeradorCertificadosOnline.Aplicacao.Modulos.Cursos;
 using GeradorCertificadosOnline.Aplicacao.Modulos.Cursos.DTOs;
@@ -15,13 +16,13 @@ public sealed class CursosController(IMediator mediator) : ControllerBase
     [HttpGet(Name = "ListarCursos")]
     [Tags("Cursos")]
     [EndpointSummary("Lista os cursos")]
-    [EndpointDescription("Retorna todos os cursos ordenados por nome e, em caso de empate, por identificador.")]
+    [EndpointDescription("Retorna os cursos do usuário autenticado ordenados por nome e, em caso de empate, por identificador.")]
     [ProducesResponseType<IReadOnlyList<CursoDto>>(200)]
     public async Task<ActionResult<IReadOnlyList<CursoDto>>> Listar(
         CancellationToken cancellationToken)
     {
         var resultado = await mediator.Send(
-            new ListarCursosQuery(),
+            new ListarCursosQuery(ObterUsuarioId()),
             cancellationToken);
 
         if (resultado.IsFailed)
@@ -41,6 +42,7 @@ public sealed class CursosController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken)
     {
         var command = new CadastrarCursoCommand(
+            ObterUsuarioId(),
             request.Nome,
             request.CargaHoraria,
             request.DataConclusao);
@@ -71,12 +73,17 @@ public sealed class CursosController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken)
     {
         var resultado = await mediator.Send(
-            new ObterCursoPorIdQuery(cursoId),
+            new ObterCursoPorIdQuery(cursoId, ObterUsuarioId()),
             cancellationToken);
 
         if (resultado.IsFailed)
             return this.ProblemDetails(resultado);
 
         return Ok(resultado.Value);
+    }
+
+    private Guid ObterUsuarioId()
+    {
+        return Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
     }
 }

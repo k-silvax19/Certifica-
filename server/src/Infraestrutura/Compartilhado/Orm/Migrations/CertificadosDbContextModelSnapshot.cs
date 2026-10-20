@@ -108,7 +108,12 @@ namespace GeradorCertificadosOnline.Infraestrutura.Compartilhado.Orm.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<Guid?>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Cursos");
                 });
@@ -263,6 +268,14 @@ namespace GeradorCertificadosOnline.Infraestrutura.Compartilhado.Orm.Migrations
                         .IsRequired();
 
                     b.Navigation("Curso");
+                });
+
+            modelBuilder.Entity("GeradorCertificadosOnline.Dominio.Modulos.Cursos.Curso", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser<System.Guid>", null)
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>

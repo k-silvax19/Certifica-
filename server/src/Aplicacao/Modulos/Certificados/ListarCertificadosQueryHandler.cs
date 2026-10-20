@@ -7,7 +7,7 @@ using MediatR;
 
 namespace GeradorCertificadosOnline.Aplicacao.Modulos.Certificados;
 
-public sealed record ListarCertificadosQuery(Guid CursoId)
+public sealed record ListarCertificadosQuery(Guid CursoId, Guid UsuarioId)
     : IRequest<Result<IReadOnlyList<CertificadoDto>>>;
 public sealed class ListarCertificadosQueryHandler(
     IRepositorioCurso repositorioCurso,
@@ -19,7 +19,7 @@ public sealed class ListarCertificadosQueryHandler(
         CancellationToken cancellationToken
     )
     {
-        if (!await repositorioCurso.ExisteAsync(query.CursoId, cancellationToken))
+        if (!await repositorioCurso.ExisteAsync(query.CursoId, query.UsuarioId, cancellationToken))
             return Result.Fail(ErrosDeCurso.NaoEncontrado());
 
         var processamento = await repositorioProcessamento.SelecionarPorCursoAsync(

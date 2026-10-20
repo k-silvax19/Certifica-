@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using GeradorCertificadosOnline.Api.Compartilhado.Http;
 using GeradorCertificadosOnline.Aplicacao.Modulos.Certificados;
 using GeradorCertificadosOnline.Aplicacao.Modulos.Certificados.DTOs;
@@ -30,7 +31,7 @@ public sealed class CertificadosController(IMediator mediator) : ControllerBase
             .ToList();
 
         var resultado = await mediator.Send(
-            new SolicitarGeracaoCertificadosCommand(cursoId, alunos),
+            new SolicitarGeracaoCertificadosCommand(cursoId, ObterUsuarioId(), alunos),
             cancellationToken);
 
         if (resultado.IsFailed)
@@ -54,7 +55,7 @@ public sealed class CertificadosController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken)
     {
         var resultado = await mediator.Send(
-            new ObterStatusProcessamentoQuery(cursoId),
+            new ObterStatusProcessamentoQuery(cursoId, ObterUsuarioId()),
             cancellationToken);
 
         if (resultado.IsFailed)
@@ -73,7 +74,7 @@ public sealed class CertificadosController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken)
     {
         var resultado = await mediator.Send(
-            new ListarCertificadosQuery(cursoId),
+            new ListarCertificadosQuery(cursoId, ObterUsuarioId()),
             cancellationToken);
 
         if (resultado.IsFailed)
@@ -94,7 +95,7 @@ public sealed class CertificadosController(IMediator mediator) : ControllerBase
         CancellationToken cancellationToken)
     {
         var resultado = await mediator.Send(
-            new ObterArquivoCertificadosQuery(cursoId),
+            new ObterArquivoCertificadosQuery(cursoId, ObterUsuarioId()),
             cancellationToken);
 
         if (resultado.IsFailed)
@@ -103,5 +104,10 @@ public sealed class CertificadosController(IMediator mediator) : ControllerBase
         var arquivo = resultado.Value;
 
         return File(arquivo.Conteudo, arquivo.ContentType, arquivo.Nome);
+    }
+
+    private Guid ObterUsuarioId()
+    {
+        return Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
     }
 }
