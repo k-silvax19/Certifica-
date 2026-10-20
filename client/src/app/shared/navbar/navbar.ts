@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   selector: 'app-navbar',
   templateUrl: './navbar.html',
 })

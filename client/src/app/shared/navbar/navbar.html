@@ -1,36 +1,38 @@
-<header class="border-b border-slate-200 bg-white">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-      <a
-        routerLink="/"
-        class="inline-flex items-center gap-3 rounded-lg text-lg font-semibold tracking-tight"
-      >
-        <span
-          class="grid size-10 place-items-center bg-[#101b36] rounded-xl text-cyan-200"
-          aria-hidden="true"
-          >C</span
-        >
-        Certifica<span class="-ml-3 text-indigo-600">+</span>
-      </a>
-
-      <span class="flex gap-2">
-        @if (sessaoAutenticada(); as sessao) {
-          <div class="flex items-center gap-3 sm:gap-5">
-            <p class="hidden text-sm text-slate-600 sm:block">{{ sessao.usuario.email }}</p>
-
-            <button
-              (click)="authService.encerrarSessao()"
-              class="text-slate-700 px-4 py-2.5 text-sm font-semibold rounded-lg hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
-            >
-              Sair
-            </button>
-          </div>
-        } @else {
-          <a
-            routerLink="/login"
-            class="bg-indigo-700 text-white px-4 py-2.5 text-sm font-semibold rounded-lg hover:bg-indigo-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-700"
-            >Entrar</a
-          >
-        }
-      </span>
-    </div>
-  </header>
+﻿<aside class="app-sidebar">
+  <a routerLink="/" class="brand" aria-label="Certifica+, página inicial"
+    ><span class="brand-symbol" aria-hidden="true">▤<span>✦</span></span
+    ><span>Certifica<span class="brand-plus">+</span></span></a
+  >
+  <p class="sidebar-caption">ESPAÇO DA INSTITUIÇÃO</p>
+  <nav class="sidebar-links" aria-label="Navegação principal">
+    <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }"
+      ><span aria-hidden="true">⌂</span> Home</a
+    >
+    <a routerLink="/cursos" routerLinkActive="is-active"
+      ><span aria-hidden="true">◇</span> Cursos
+      <span class="nav-arrow" aria-hidden="true">⌄</span></a
+    >
+    <a routerLink="/cursos/cadastrar" routerLinkActive="is-active"
+      ><span aria-hidden="true">⊕</span> Cadastrar curso</a
+    >
+  </nav>
+  <div class="sidebar-account">
+    @if (sessaoAutenticada(); as sessao) {
+      <div class="account-profile">
+        <span class="account-avatar" aria-hidden="true">{{
+          sessao.usuario.email.charAt(0).toUpperCase()
+        }}</span>
+        <div>
+          <p>Minha instituição</p>
+          <span class="account-email">{{ sessao.usuario.email }}</span>
+        </div>
+      </div>
+      <button type="button" (click)="authService.encerrarSessao()">
+        <span aria-hidden="true">↪</span> Sair da conta
+      </button>
+    } @else {
+      <a routerLink="/login"><span aria-hidden="true">↪</span> Entrar na conta</a>
+    }
+    <p class="sidebar-footer">Certifica+ · 2026</p>
+  </div>
+</aside>
